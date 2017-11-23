@@ -1,5 +1,5 @@
 ## AER-CNN-KERAS
-This project is a proof of the concept implementation of a Convolutioinal Neural Network (`CNN`) based implementation of Audio Event Recognition (`AER`) in KERAS. Keep in mind that it is the first version by the author and is more like an over night build.  As it is, it is not the best model available for this prupose. The work on the model is under progress and any refinements will be updated on the repository.
+This project is a proof of the concept implementation of a Convolutioinal Neural Network (`CNN`) based implementation of Audio Event Recognition (`AER`) in KERAS. Keep in mind that it is the first version by the author.  As it is, it is not the best model available for this prupose. The work on the model is under progress and any refinements will be updated on the repository.
 
 ### Tools Required
 
@@ -72,7 +72,7 @@ First of all we renamed all the files in the classes to be numbers from `1` to `
 ## Experimentation and data segmentation
 We trained our model on all `50` classes. The total data is shuffeled in order to mix the classes and loose patterns. Then the data is divided into `2` subsets. `80%` for training and `20%` for testing. The training data is then further divided into `2` subsets with randomly selecting approaximately `80%` data for `trainig` and rest of the data for `validation`. So at the end we have `400` instances for testing `(8 files per class)`, approximately `1280` instance for training and `320` instance for validation. 
 ## Results
-We tested the model for all the classes and got the overall average accuracy of `52%`. We foundout that our model performs relatively well on the repetitive sounds. Considering that we report the results of the `10` choosen classes namely, 
+We tested the model for all the classes and got the overall average accuracy of `52%`. We found out that our model performs relatively well on the repetitive sounds. Considering that we report the results of the `10` choosen classes namely, 
 
 * Rain          `87.5%`
 * Rooster       `87.5%`
