@@ -72,17 +72,79 @@ First of all we renamed all the files in the classes to be numbers from `1` to `
 ## Experimentation and data segmentation
 We trained our model on all `50` classes. The total data is shuffeled in order to mix the classes and loose patterns. Then the data is divided into `2` subsets. `80%` for training and `20%` for testing. The training data is then further divided into `2` subsets with randomly selecting approaximately `80%` data for `trainig` and rest of the data for `validation`. So at the end we have `400` instances for testing `(8 files per class)`, approximately `1280` instance for training and `320` instance for validation. 
 ## Results
-We tested the model for all the classes and got the overall average accuracy of `52%`. We found out that our model performs relatively well on the repetitive sounds. Considering that we report the results of the `10` choosen classes namely, 
+We tested the model for all the classes and got the overall average accuracy of `52%`. We found out that our model performs differently on different classes. We categorized the classes into 3 groups, classes with `Very Good Performance` (with performance equal or above `75%`), `Medium Performance` (with performance value between `60%` and  `75%`) and `Bad Performance` (with performance equal or less than `50%`). The model performs for each class are reported below. 
+### Very Good Performance
 
-* Rain          `87.5%`
-* Rooster       `87.5%`
-* Door Knock    `100%`
-* Siren         `100%`
-* Clock Alarm   `87.5%`
-* Clapping      `100%`
-* Helicopter    `100%`
-* Can Opening   `87.5%` 
-* HandSaw       `87.5%`
-* PouringWater  `87.5%` .
+* Siren               : 100.0 %
+* DoorKnock           : 100.0 %
+* Clapping            : 100.0 %
+* Helicopter          : 100.0 %
+* Rain                : 87.5 %
+* Rooster             : 87.5 %
+* ClockAlarm          : 87.5 %
+* CanOpening          : 87.5 %
+* PouringWater        : 87.5 %
+* HandSaw             : 87.5 %
 
 On these classes the accuracy of the model is `92.5%` on average.
+
+### Medium Performance
+
+* VacuumCleaner       : 75.0 %
+* Dog                 : 75.0 %
+* Train               : 62.5 %
+* CarHorn             : 62.5 %
+* Crow                : 62.5 %
+* Engine              : 62.5 %
+* BrushingTeeth       : 62.5 %
+* Frog                : 62.5 %
+* Cow                 : 62.5 %
+* KeyboardTyping      : 62.5 %
+* Insects             : 62.5 %
+* SeaWaves            : 62.5 %
+* ChurchBells         : 62.5 %
+* Sheep               : 62.5 %
+
+Average performance for these classes is `64.29%`.
+
+### Bad Performance
+
+* Crickets            : 50.0 %
+* GlassBreaking       : 50.0 %
+* Coughing            : 50.0 %
+* Pig                 : 50.0 %
+* Thunderstorm        : 50.0 %
+* CracklingFire       : 50.0 %
+* ToiletFlush         : 50.0 %
+* WaterDrops          : 37.5 %
+* Crying baby         : 37.5 %
+* Fireworks           : 37.5 %
+* Hen                 : 37.5 %
+* Cat                 : 37.5 %
+* DrinkingSipping     : 37.5 %
+* Laughing            : 25.0 %
+* Chainsaw            : 25.0 %
+* Breathing           : 25.0 %
+* Sneezing            : 25.0 %
+* WashingMachine      : 25.0 %
+* Snoring             : 12.5 %
+* ClockTick           : 12.5 %
+* DoorWoodCreaks      : 12.5 %
+* ChirpingBirds       : 12.5 %
+* MouseClick          : 12.5 %
+* Footsteps           : 12.5 %
+* Wind                : 0.0 %
+* Airplane            : 0.0 %
+
+Average performance for these classes is `29.80%`.
+
+### Running instructions
+
+Follow following steps to use this code.
+
+* Download the dataset and unzip into the `Samples` directory. 
+* Keep only the `50` subdirectories for different events and delete all other files in the `Samples`.
+* Run `rename.py` to rename the files in the sub directories to name them `1 to 40.wav`.
+* Run `preprocess_data.py` to preprocess the data, this will generate the files and directories in the `Preproc` sub directory.
+* Finally run the `train_network.py`. This will load the preprocessed data from `PreProc` directory and will create `X_test`, `Y_test`, `X_validation`, `Y_validation`, `X_test` and `Y_test` variables for the training. Then will train the network and save the `X_test` variable along with `Y_test`, pre-trained model `model.h5` and class labels `Class_names.npy`.
+* `evaluate_network.py` evaluates the pretrained network and prints the performance for each class.
